@@ -1,0 +1,48 @@
+Case #1: 
+Number of ingredients: 2
+Number of packages for each: 1
+recipe: 
+500 --- 300 --- 
+packages: 
+900 --- 
+660 --- 
+Case #2: 
+Number of ingredients: 2
+Number of packages for each: 1
+recipe: 
+500 --- 300 --- 
+packages: 
+1500 --- 
+809 --- 
+Case #3: 
+Number of ingredients: 2
+Number of packages for each: 2
+recipe: 
+50 --- 100 --- 
+packages: 
+450 --- 449 --- 
+1100 --- 1101 --- 
+Case #4: 
+Number of ingredients: 2
+Number of packages for each: 1
+recipe: 
+500 --- 300 --- 
+packages: 
+300 --- 
+500 --- 
+Case #5: 
+Number of ingredients: 1
+Number of packages for each: 8
+recipe: 
+10 --- 
+packages: 
+11 --- 13 --- 17 --- 11 --- 16 --- 14 --- 12 --- 18 --- 
+Case #6: 
+Number of ingredients: 3
+Number of packages for each: 3
+recipe: 
+70 --- 80 --- 90 --- 
+packages: 
+1260 --- 1500 --- 700 --- 
+800 --- 1440 --- 1600 --- 
+1700 --- 1620 --- 900 --- 
