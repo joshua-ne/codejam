@@ -21,15 +21,30 @@ public class Solution_2019R1AB {
                addWordChainToNode(root, wordChain);
             }
 
-        	
-
-
-
-
-            System.out.println("Case #" + i + ": " );
-            printTree(root, 0);
-            System.out.println();
+            int res = countUnpaired(root);
+            System.out.println("Case #" + i + ": " + (N - res) );
+            //printTree(root, 0);
+            //System.out.println();
         }
+    }
+
+    private static int countUnpaired(CharNode node) {
+        if (node == null) return 0;
+        //if (node.subNodes.size() == 0) return 1;
+
+        int r = 0;
+        for (CharNode n : node.subNodes.values()) {
+            r += countUnpaired(n);
+        }
+
+        if (node.isWord) r += 1;
+        if (node.letter != ' ' && r >= 2) r -= 2;
+
+        //System.out.println(node.letter + " " + r);
+
+        return r;
+
+        
     }
 
     private static CharNode buildChainFromWord(String word, int offset) {
@@ -37,6 +52,7 @@ public class Solution_2019R1AB {
             return null;
         }
         CharNode node = new CharNode(word.charAt(word.length() - offset));
+        node.wordNum = 1;
         if (offset == word.length()){
             node.isWord = true;
         }
@@ -49,12 +65,18 @@ public class Solution_2019R1AB {
 
     private static void addWordChainToNode(CharNode node, CharNode word) {
 
-        if(word == null) return;
+        if(word == null) {
+            node.wordNum++;
+            node.isWord = true;
+            return;}
 
         if (node.subNodes.containsKey(word.letter)) {
+            node.wordNum++;
             addWordChainToNode(node.subNodes.get(word.letter), word.next);
         } else {
             node.subNodes.put(word.letter, word);
+            node.wordNum++;
+            //System.out.println("special case: " + Character.toString(node.letter) + " " + node.wordNum);
         }
     }
 
@@ -62,7 +84,7 @@ public class Solution_2019R1AB {
     	for (int i = 0; i < level; i++){
     		System.out.print(' ');
     	}
-        System.out.print(root.letter);
+        System.out.print(root.letter + " " + root.wordNum);
         System.out.println();
         for (CharNode node : root.subNodes.values()) {
             printTree(node, level + 1);
@@ -76,6 +98,7 @@ public class Solution_2019R1AB {
         Map<Character, CharNode> subNodes;
         CharNode next;
         boolean isWord;
+        int wordNum;
 
 
         CharNode(char letter) {
@@ -83,6 +106,7 @@ public class Solution_2019R1AB {
             this.subNodes = new HashMap<>();
             this.next = null;
             this.isWord = false;
+            this.wordNum = 0;
         }
 
         @Override
