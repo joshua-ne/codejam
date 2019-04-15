@@ -30,7 +30,6 @@ public class Solution_2019R1AB {
 
     private static int countUnpaired(CharNode node) {
         if (node == null) return 0;
-        //if (node.subNodes.size() == 0) return 1;
 
         int r = 0;
         for (CharNode n : node.subNodes.values()) {
@@ -39,8 +38,6 @@ public class Solution_2019R1AB {
 
         if (node.isWord) r += 1;
         if (node.letter != ' ' && r >= 2) r -= 2;
-
-        //System.out.println(node.letter + " " + r);
 
         return r;
 
@@ -76,7 +73,6 @@ public class Solution_2019R1AB {
         } else {
             node.subNodes.put(word.letter, word);
             node.wordNum++;
-            //System.out.println("special case: " + Character.toString(node.letter) + " " + node.wordNum);
         }
     }
 
@@ -92,14 +88,12 @@ public class Solution_2019R1AB {
     }
 
 
-
     static class CharNode {
         char letter;
         Map<Character, CharNode> subNodes;
         CharNode next;
         boolean isWord;
         int wordNum;
-
 
         CharNode(char letter) {
             this.letter = letter;
