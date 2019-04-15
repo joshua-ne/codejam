@@ -40,8 +40,6 @@ public class Solution_2019R1AB {
         if (node.letter != ' ' && r >= 2) r -= 2;
 
         return r;
-
-        
     }
 
     private static CharNode buildChainFromWord(String word, int offset) {
