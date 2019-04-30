@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for (int i = 0; i < t; i++){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int n = sc.nextInt();
+            int iter = 0;
+            boolean resultFound = false;
+            while (!resultFound && iter < n) {
+                iter++;
+                int p = (a+b+1)/2;
+                System.out.println(p);
+                String result = sc.next();
+                switch (result) {
+                    case "CORRECT":
+                        resultFound = true;
+                        break;
+                    case "TOO_SMALL":
+                        a = p;
+                        break;
+                    case "TOO_BIG":
+                        b = p-1;
+                        break;
+                    case "WRONG_ANSWER":
+                        throw new IllegalStateException("WRONG_ANSWER");
+                    default:
+                        throw new IllegalStateException("UNKNOWN");
+                }
+            }
+        }
+    }
+}

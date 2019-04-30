@@ -1,0 +1,28 @@
+def read(conv=str, sep=None):
+    line = input()
+    if sep is None:
+        return conv(line)
+    else:
+        return [conv(token) for token in line.split(sep)]
+
+
+def solve(A, B, N):
+    while A <= B:
+        x = (A + B) // 2
+        print(x, flush=True)
+        s = read()
+        if s == "CORRECT":
+            return
+        elif s == "TOO_SMALL":
+            A = x+1
+        elif s == "TOO_BIG":
+            B = x-1
+        elif s == "WRONG_ANSWER":
+            exit(1)
+
+
+T = read(int)
+for t in range(1, T + 1):
+    A, B = read(int, ' ')
+    N = read(int)
+    solve(A+1, B, N)
