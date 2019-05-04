@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
-public class Solution_2019R1BB {
+
+public class InteractiveTemplate {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
@@ -23,21 +24,15 @@ public class Solution_2019R1BB {
             rings[5] = (int)(ans[4] - ans[3] - 32 * rings[0] - 4 * rings[1] - 2 * rings[2]);
 
             for (int j = 0; j <= 5; j++) {
-            	System.out.print(rings[j] + " ");
-
-            	
+            	if (j < 5) System.out.print(rings[j] + " ");
+            	else {
+            		System.out.println(rings[j]);
+            		System.out.flush();
+            	}
             }
-
-            System.out.println();
-            System.out.flush();
            
 
-            int verdict = in.nextInt();
-                if (verdict > 0) {
-                    System.err.println("Correct");
-                } else {
-                    System.err.println("Wrong");
-                }
+            int res = in.nextInt();
             
         }
     }

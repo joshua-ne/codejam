@@ -1,0 +1,29 @@
+# . # # 
+. . . . 
+# . # # 
+# . # # 
+H H H H 
+# . # # 
+2 1 V
+1
+# . # # 
+H H H H 
+# V # # 
+0 1 V
+0
+# V # # 
+H H H H 
+# V # # 
+Not win!
+0 1 V
+1
+# V # # 
+H H H H 
+# . # # 
+2 1 V
+0
+# V # # 
+H H H H 
+# V # # 
+Not win!
+Case #1: 0
