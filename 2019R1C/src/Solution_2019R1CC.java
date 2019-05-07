@@ -56,7 +56,7 @@ public class Solution_2019R1CC {
         return true;
     }
 
-    static Set<Move> checkBoard(char[][] board) {
+    private static Set<Move> checkBoard(char[][] board) {
         Set<Move> available = new HashSet<>();
         int R = board.length;
         int C = board[0].length;
