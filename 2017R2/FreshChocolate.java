@@ -19,7 +19,7 @@ class FreshChocolate {
       remaiderCounter[groups[i] % P]++;
     }
 
-    Jren.p(remaiderCounter);
+    //Jren.p(remaiderCounter);
 
     if (P == 2) {
       res = remaiderCounter[0] + remaiderCounter[1] / 2 + remaiderCounter[1] % 2;
@@ -46,14 +46,15 @@ class FreshChocolate {
 
     if (P == 4) {
       res += remaiderCounter[0];
-      remaiderCounter[0] = 0;
+      //remaiderCounter[0] = 0;
       res += remaiderCounter[2] / 2;
       remaiderCounter[2] = remaiderCounter[2] % 2;
       int tmp = Math.min(remaiderCounter[1], remaiderCounter[3]);
       res += tmp;
       remaiderCounter[1] -= tmp;
       remaiderCounter[3] -= tmp;
-      Jren.p(remaiderCounter);
+      //Jren.p(remaiderCounter);
+      //Jren.p(res);
       if (remaiderCounter[2] == 0) {
         if (remaiderCounter[1] != 0) {
           res += remaiderCounter[1] / 4 + (remaiderCounter[1] % 4 == 0 ? 0 : 1);
@@ -72,7 +73,7 @@ class FreshChocolate {
           }
         }
 
-        if (remaiderCounter[3] != 0) {
+        else if (remaiderCounter[3] != 0) {
           if (remaiderCounter[3] <= 2) {res += 1;}
           else {
             remaiderCounter[3] -= 2;
@@ -80,6 +81,8 @@ class FreshChocolate {
             res += remaiderCounter[3] / 4 + (remaiderCounter[3] % 4 == 0 ? 0 : 1);
           }
         }
+
+        else res++;
       }
     }
   }
