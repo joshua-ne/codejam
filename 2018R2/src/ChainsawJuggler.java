@@ -84,7 +84,7 @@ class ChainsawJuggler {
         return "Status: v = " + v + " , b = " + b + " , r = " + r; 
     }
   }
-s
+
   public static void main(String[] args) {
     Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
     int T = in.nextInt();
