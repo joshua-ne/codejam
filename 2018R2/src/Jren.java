@@ -13,6 +13,12 @@ class Jren {
 		System.out.println();
 	}
 
+	static void p(Set<int[]> set) {
+		for (int[] arr : set) {
+			Jren.p(arr);
+		}
+	}
+
 	static void p(char c) {
 		System.out.println(String.valueOf(c));
 	}
@@ -48,7 +54,7 @@ class Jren {
 	static void p(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
-				System.out.printf("%3d", matrix[i][j] + " ");
+				System.out.printf("%3d", matrix[i][j]);
 			}
 			System.out.println();
 		}
