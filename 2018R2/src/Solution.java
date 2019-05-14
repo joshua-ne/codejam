@@ -2,14 +2,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-class ChainsawJuggler {
+class Solution {
   int R;
   int B;
   private Map<Integer, int[]> sets;
   static Map<Status, Integer> dp;
   private int res;
-
-  private ChainsawJuggler(int r, int b) {
+  private Solution(int r, int b) {
     B = b;
     R = r;
     sets = new HashMap<>();
@@ -21,15 +20,6 @@ class ChainsawJuggler {
       }
     }
     if (dp == null) dp = new HashMap<>();
-    /*
-    for (int k = 0; k < sets.size(); k++) {
-      for (int i = 0; i < B; i++) {
-        for (int j = 0; j < R; j++) {
-          dp.put(new Status(k, i, j), 0);
-        }
-      }
-    }
-    */
     res = 0;
   }
 
@@ -48,38 +38,20 @@ class ChainsawJuggler {
                            1 + solve(setIdx - 1, new Status(sets.get(setIdx - 1)[0], sets.get(setIdx - 1)[1], status.b - sets.get(setIdx)[0], status.r - sets.get(setIdx)[1])));
       else
         optimal = solve(setIdx - 1, new Status(sets.get(setIdx - 1)[0], sets.get(setIdx - 1)[1], status.b, status.r));
-      
     }
     dp.put(status, optimal);
     return optimal;
   }
 
-  void printDP() {
-    for (Status s : dp.keySet()) {
-        System.out.println(s.toString() + " , optimal: " + dp.get(s));
-    }
-  }
-
-
 
   class Status {
-    int vB;
-    int vR;
-    int b;
-    int r;
+    int vB, vR, b, r;
     Status (int _vB, int _vR, int _b, int _r) {
-      vB = _vB;
-      vR = _vR;
-      b = _b;
-      r = _r;
+      vB = _vB; vR = _vR; b = _b; r = _r;
     }
     public int hashCode() {
       int hash = 7;
-      hash = 31 * hash + vB;
-      hash = 31 * hash + vR;
-      hash = 31 * hash + b;
-      hash = 31 * hash + r;
-      return hash;
+      return 31 * hash + vB * 3+ vR * 37+ b * 23 + r * 47;
     }
 
     public boolean equals(Object o) {
@@ -88,29 +60,17 @@ class ChainsawJuggler {
       Status s = (Status) o;
       return this.vB == s.vB && this.vR == s.vR && this.r == s.r && this.b == s.b;
     }
-
-    public String toString() {
-        return "Status: vB = " + vB + ", vR: " + vR + " , b = " + b + " , r = " + r;
-    }
   }
 
   public static void main(String[] args) {
-    Jren.p(Integer.hashCode(100));
     Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
     int T = in.nextInt();
     for (int t = 1; t <= T; t++) {
-      //if (ChainsawJuggler.dp != null) System.out.println(ChainsawJuggler.dp.size());
-      long start = System.nanoTime();
       int R = in.nextInt();
       int B = in.nextInt();
-      ChainsawJuggler cj = new ChainsawJuggler(R, B);
+      Solution cj = new Solution(R, B);
       cj.solve();
-      long end = System.nanoTime();
       System.out.println("Case #" + t +  ": " + cj.res );
-      System.out.println("time: " + (end - start) / 1000000);
-      //System.out.println("Case: #" + t + " (B: " + B + ", R: " + R + ")" + ": " + cj.res );
-      //cj.printDP();
     }
-
   }
 }
