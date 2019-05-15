@@ -23,13 +23,13 @@ class FreshChocolateDP {
       sum += groups[i];
     }
     dp = new HashMap<>();
-    Jren.p(remainderCounter);
+    //Jren.p(remainderCounter);
     //Jren.p("jflwefsjf");
   }
 
   void solve_dp() {
     res = solve_dp(new Status(new PTuple(remainderCounter)));
-    Jren.p(dp.size());
+    //Jren.p(dp.size());
     
     for(Status s : dp.keySet()) {
       /*
@@ -42,11 +42,13 @@ class FreshChocolateDP {
   }
 
   int solve_dp(Status status) {
-    status.print();
+    
     if (status == new Status(new PTuple(P))) return 0;
     if (dp.containsKey(status)) return dp.get(status);
+    //status.print();
     int res = 0;
-    for (int i = 0; i < P; i++) {
+    res += remainderCounter[0];
+    for (int i = 1; i < P; i++) {
       if (status.pTuple.nums[i] > 0) {
         int[] curNums = status.pTuple.nums.clone();
         curNums[i]--;
@@ -86,8 +88,8 @@ class FreshChocolateDP {
 
     public int hashCode() {
       int hash = 7;
-      for (int i : this.pTuple.nums) {
-        hash += i * 31;
+      for (int i = 1; i < this.pTuple.nums.length; i++) {
+        hash += this.pTuple.nums[i] * 31;
       }
       return hash;
     }
@@ -101,7 +103,7 @@ class FreshChocolateDP {
 
     public void print() {
       //Jren.p("remainder: " + remainder);
-      Jren.p(pTuple.nums);
+      //Jren.p(pTuple.nums);
     }
   }
 
@@ -129,7 +131,7 @@ class FreshChocolateDP {
       if (o.getClass() != this.getClass()) return false;
       PTuple p = (PTuple) o;
       if (this.P != p.P) return false;
-      for (int i = 0; i < P; i++) {
+      for (int i = 1; i < P; i++) {
         if (this.nums[i] != p.nums[i]) return false;
       }
       return true;
